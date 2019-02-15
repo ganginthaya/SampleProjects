@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 //using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +60,21 @@ namespace HashTableConsole
             return currentValue;
         }
 
+        public bool RemoveItem (Tkey key) {
+            bool isRemoved = false; 
+            int bucketIndex = GetHashBucketIndex(key);
+            var currentListItem = _hashBucketList[bucketIndex];
+
+            var itemToDelete = default(HashNode<Tkey,Tvalue>);
+            foreach (var item in currentListItem) { //We can use LINQ, but just using the foreach 
+                if (item.Key.Equals(key)) {
+                    var curItem = item;
+                }
+            }
+            --_size; //Reduce the item size 
+            isRemoved = _hashBucketList[bucketIndex].Remove(itemToDelete);
+            return isRemoved;
+        }
         public void AddItem(Tkey key, Tvalue value ) {
             //First get the HashBucket index 
             int bucketIndex = GetHashBucketIndex(key);
